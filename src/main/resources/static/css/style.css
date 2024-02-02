@@ -1,0 +1,31 @@
+.page {
+    max-width: 1000px;
+    min-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.product-block {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+}
+
+.product-card {
+    margin: 5px;
+    padding: 10px;
+    border: #6c757d 1px solid;
+}
+
+.product-photo {
+    width: 200px;
+}
+
+.product-add {
+    width: 500px;
+    margin-bottom: 25px;
+}
+.product-input-form{
+    margin-bottom: 15px;
+}

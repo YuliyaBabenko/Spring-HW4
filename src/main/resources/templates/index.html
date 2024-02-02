@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление товаров</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.slim.min.js"></script>
+</head>
+<body>
+<div class="page">
+    <div class="product-add">
+        <h4>Добавление товара</h4>
+        <form action="/addProduct" method="POST">
+            <div class="product-input-form">
+                <div>
+                    <label class="form-label" for="title">Наименование товара</label>
+                    <input class="form-control" type="text" name="title" id="title" value=""/>
+                </div>
+                <div>
+                    <label class="form-label" for="article">Артикул</label>
+                    <input class="form-control" type="number" name="article" id="article">
+                </div>
+                <div>
+                    <label class="form-label" for="description">Описание товара</label>
+                    <input class="form-control" type="text" name="description" id="description">
+                </div>
+                <div>
+                    <label class="form-label" for="cost">Стоимость</label>
+                    <input class="form-control" type="number" name="cost" id="cost">
+                </div>
+                <div style="display: none">
+                    <label class="form-label" for="imageURL">ссылка на изображение</label>
+                    <input class="form-control" type="text" name="imageURL" id="imageURL">
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Добавить</button>
+            <button class="btn btn-danger" type="reset">R</button>
+        </form>
+    </div>
+    <h4>Товары в наличии</h4>
+    <div class="product-block">
+        <div class="product-card" th:each="product:${productList}">
+            <h3 class="product-card-title" th:text="${product.getTitle}"></h3>
+            <p class="product-card-article">Артикул: <span th:text="${product.getArticle()}"></span></p>
+            <img class="product-card-photo" th:src="${product.getImageURL()}" src="" alt="изображение товара" srcset=""/>
+            <p class="product-card-cost">Цена: <span th:text="${product.getCost()}"></span> у.е.</p>
+            <p class="product-card-description">Описание: <span th:text="${product.getDescription()}"></span></p>
+            <a href="" th:href="@{'/del/'+${product.getArticle()}}">Удалить</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
